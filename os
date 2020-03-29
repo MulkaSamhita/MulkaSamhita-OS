@@ -56,4 +56,25 @@
 				processWait+=CurrentTime-timeART[ProcessNumber]-busTime[ProcessNumber]; 
 				processTUT+=CurrentTime-timeART[ProcessNumber]; 
 				processIndicator=0; 
-	                       
+	                     } 
+			if(ProcessNumber==numberNO-1){
+				x++;
+				if(x==2){
+					ProcessNumber=0;
+					timeQuantum=6;                  // now the Time Quantum is -> 6.
+					
+					printf("For the second round time quantum is --> 6. \n");
+				}
+				else{
+					break;
+				}
+			}
+			else if(CurrentTime >= timeART[ProcessNumber+1]){
+				ProcessNumber++;
+			}
+			else{
+				ProcessNumber=0;
+			}
+		}
+		
+
