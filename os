@@ -47,3 +47,13 @@
 				remainingTime[ProcessNumber]-=timeQuantum; 
 				CurrentTime+=timeQuantum; 
 			} 
+	if(remainingTime[ProcessNumber]==0 && processIndicator==1)			
+			{ printf("%d",ProcessNumber);
+				remainingProcesses--;				
+				printf("P %d",ProcessNumber+1); 
+				printf("\t\t\t%d",CurrentTime-timeART[ProcessNumber]);
+				printf("\t\t\t%d\n",CurrentTime-busTime[ProcessNumber]-timeART[ProcessNumber]);
+				processWait+=CurrentTime-timeART[ProcessNumber]-busTime[ProcessNumber]; 
+				processTUT+=CurrentTime-timeART[ProcessNumber]; 
+				processIndicator=0; 
+	                       
