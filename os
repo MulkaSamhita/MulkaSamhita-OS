@@ -77,4 +77,32 @@
 			}
 		}
 		
+		functionRR(numberNO,remainingTime,CurrentTime,timeART,busTime);
+		
+		return 0;
+	}
+	
+
+
+	void functionRR(int numberNO,int remainingTime[10],int CurrentTime,int timeART[10], int busTime[10]){
+		
+	// Variable declaration inside the function and assignment -->
+		int n=numberNO;
+		int total=0;
+		int locationMethod;
+		int temporaryVariable,busTimeMethod[20],ProcessNumber[20],waitingTimeMethod[20],turnAroundTime[20];
+	    float averageWait;
+		float averageTurnAroundTime;
+	    
+	    printf("Third round is the round with least burst time.....\n");
+	    
+	    
+	    int i=0;
+	    
+	    for(i=0;i<n;i++)
+	    {
+	        busTimeMethod[i]=remainingTime[i];
+	        waitingTimeMethod[i]=CurrentTime-timeART[i]-busTimeMethod[i];
+			ProcessNumber[i]=i+1;
+	    }
 
