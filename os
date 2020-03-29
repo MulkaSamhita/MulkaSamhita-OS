@@ -105,4 +105,47 @@
 	        waitingTimeMethod[i]=CurrentTime-timeART[i]-busTimeMethod[i];
 			ProcessNumber[i]=i+1;
 	    }
+	    
+	    int j=0;
+		
+	    for(i=0;i<n;i++)
+	    {
+	        locationMethod=i;
+	        for(j=i+1;j<n;j++)
+	        {
+	            if(busTimeMethod[j]<busTimeMethod[locationMethod]){
+	            	locationMethod=j;
+	            }
+	        }
+	        temporaryVariable=busTimeMethod[i];
+	        busTimeMethod[i]=busTimeMethod[locationMethod];
+	        busTimeMethod[locationMethod]=temporaryVariable;
+	        temporaryVariable=ProcessNumber[i];
+	        ProcessNumber[i]=ProcessNumber[locationMethod];
+	        ProcessNumber[locationMethod]=temporaryVariable;
+	    }
+		
+	    for(i=1;i<n;i++)
+	    {
+	        for(j=0;j<i;j++){
+	        	waitingTimeMethod[i]+=busTimeMethod[j];
+	        }
+	        total+=waitingTimeMethod[i];
+	    }
+	 
+	    averageWait=(float)total/n;
+	    total=0;
+	    printf("\nProcess Number\t\tBurst time of Process\t\twaiting time of Process\t\tTurnaround Time of Process");
+	    for(i=0;i<n;i++)
+	    {
+	        turnAroundTime[i]=busTimeMethod[i]+waitingTimeMethod[i];
+	        total=total + turnAroundTime[i];
+	        printf("\nP%d\t\t\t\t%d\t\t\t\t%d\t\t\t\t%d",ProcessNumber[i],busTimeMethod[i],waitingTimeMethod[i],turnAroundTime[i]);
+	    }
+	    averageTurnAroundTime=(float)total/n;
+	    printf("\n\nPrcoess's Average calculated waiting time is -->  %f",averageWait);
+	    printf("\n Process's Average calculated turnaround time is -->  %f\n",averageTurnAroundTime);
+		
+	}
+
 
