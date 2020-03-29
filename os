@@ -30,3 +30,20 @@
 			remainingTime[ProcessNumber]=busTime[ProcessNumber]; 
 			printf("\n");
 		} 
+	printf("let's see the details of time quantum we declared, it as follows -->:\n");
+		printf("For the first round time quantum is --> 3.\n"); 
+		timeQuantum=3;         // Time quantum is -> 3
+		CurrentTime=0;
+		for(ProcessNumber=0;remainingProcesses!=0;) 
+		{
+			if(remainingTime[ProcessNumber]<=timeQuantum && remainingTime[ProcessNumber]>0)
+			{ 
+				CurrentTime+=remainingTime[ProcessNumber]; 
+				remainingTime[ProcessNumber]=0; 
+				processIndicator=1; 
+			} 
+			else if(remainingTime[ProcessNumber]>0)
+			{ 
+				remainingTime[ProcessNumber]-=timeQuantum; 
+				CurrentTime+=timeQuantum; 
+			} 
